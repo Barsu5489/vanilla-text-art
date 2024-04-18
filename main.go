@@ -7,21 +7,39 @@ import (
 	"os"
 )
 
+type Values struct {
+	from int
+	to   int
+}
+
 func main() {
-	f, err := os.Open("file.txt")
+	f, err := os.Open("standard.txt")
 	if err != nil {
 		log.Fatalln(err)
 	}
 	defer f.Close()
 
 	scanner := bufio.NewScanner(f)
-	var line int
-	for scanner.Scan() {
-		if len(scanner.Text()) == 0 {
-			fmt.Println(line)
-		}
-		line++
+	lines := 1
 
+	// For ranges from and to
+
+	// ln := make(map[int]int)
+	// for i := 20; i < 127; i++ {
+	//
+	// }
+
+	var i []int
+
+	for scanner.Scan() {
+
+		line := scanner.Text()
+
+		if len(line) == 0 {
+			i = append(i, lines)
+		}
+
+		lines++
 	}
-	fmt.Print(line)
+	fmt.Print((i))
 }
