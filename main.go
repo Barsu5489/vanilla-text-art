@@ -1,33 +1,27 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"log"
+	"os"
+)
 
-func main (){
-	for i:= 0; i < 8; i++{
-        if i == 1 || i == 5{
-           fmt.Print("-") 
-        }else{
-            fmt.Print(" ")
-        }
-         
-    }
-    fmt.Println()
-     for i := 0; i<= 4; i++{
-         
-         if i < 4 && i != 2 && i != 1{
-                 for i:= 0; i <= 1; i++{
-     fmt.Print("| | ")
-     
-    }
-         }else if i == 4{
-               fmt.Print("|_| |_|")
-         } else if i == 1{
-             fmt.Print("| |_| |")
-         }else {
-             fmt.Print("|  _  |")
-         }
-     
-
-     fmt.Println()
-		}
+func main() {
+	f, err := os.Open("file.txt")
+	if err != nil {
+		log.Fatalln(err)
 	}
+	defer f.Close()
+
+	scanner := bufio.NewScanner(f)
+	var line int
+	for scanner.Scan() {
+        if line >= 838 && line < 846{
+            fmt.Println(scanner.Text())
+        }
+	
+		line++
+	}
+    fmt.Print(line)
+}
