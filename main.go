@@ -17,11 +17,11 @@ func main() {
 	scanner := bufio.NewScanner(f)
 	var line int
 	for scanner.Scan() {
-        if line >= 838 && line < 846{
-            fmt.Println(scanner.Text())
-        }
-	
+		if len(scanner.Text()) == 0 {
+			fmt.Println(line)
+		}
 		line++
+
 	}
-    fmt.Print(line)
+	fmt.Print(line)
 }
